@@ -7,8 +7,7 @@ defmodule Identicon do
   end
 
   def build_grid(%Identicon.Image{hex: hex} = image) do
-    hex
-    |>Enum.chunk(3)
+    Enum.chunk_every(hex, 3, 2, :discard)
     |> Enum.map(&mirror_row/1)
   end
 
